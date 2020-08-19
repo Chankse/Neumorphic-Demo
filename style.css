@@ -17,7 +17,7 @@ body {
     /* width: 800px; */
     /* height: 600px; */
     display: grid;
-    grid-template-columns: 200px 300px 200px;
+    grid-template-columns: 200px 300px 200px 300px;
     grid-template-rows: 80px 80px 80px;
     column-gap: 40px;
     row-gap: 40px;
@@ -338,4 +338,176 @@ body {
 .toggle input[type=checkbox]:checked~.toggle-response {
     background-color: #FCA311;
     box-shadow: 0 0 5px #FCA311;
+}
+
+.range-sliders {
+    /* grid-column-start: 4; */
+    /* grid-row-start: 1; */
+    grid-area: 1 / 4 / 4 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slider_v1,
+.slider_v2,
+.slider_v3 {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slider_v1 input[type=range],
+.slider_v2 input[type=range],
+.slider_v3 input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+.slider_v1 input[type=range]:focus,
+.slider_v2 input[type=range]:focus,
+.slider_v3 input[type=range]:focus {
+    outline: none;
+}
+
+.slider_v1 input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #EBECF0;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+        -3px -3px 6px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.slider_v2 input[type=range]::-webkit-slider-thumb {
+    opacity: 0;
+}
+
+.slider_v3 input[type=range]::-webkit-slider-thumb {
+    opacity: 0;
+
+}
+
+.slider_v1 .bar,
+.slider_v2 .bar,
+.slider_v3 .bar {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 30px;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    background: #EBECF0;
+    overflow: hidden;
+}
+
+.slider_v1 .bar {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(255, 255, 255, 1);
+}
+
+.slider_v2 .bar {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+        -2px -2px 4px rgba(255, 255, 255, 1);
+}
+
+.slider_v3 .bar {
+    background: #EBECF0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+        -2px -2px 4px rgba(255, 255, 255, 1);
+}
+
+.slider_v1 .bar .fill,
+.slider_v2 .bar .fill {
+    display: block;
+    width: 50%;
+    height: 100%;
+    background-color: #FCA311;
+}
+
+.slider_v1 .bar .fill {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.slider_v2 .bar .fill {
+    border-radius: 20px;
+}
+
+.slider_v2 .tooltip {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    top: -30px;
+    left: calc(0% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #EBECF0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+        -5px -5px 10px rgba(255, 255, 255, 1);
+
+    font-size: 24px;
+    font-family: sans-serif;
+    color: #7C8394;
+}
+
+.slider_v2 .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #EBECF0 transparent transparent transparent;
+}
+
+.slider_v3 .bar .fill {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 1px solid #EBECF0;
+    overflow: hidden;
+    background: #EBECF0;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(255, 255, 255, 1);
+    position: relative;
+}
+
+.slider_v3 .bar .fill .thumb {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 40px;
+    height: 18px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffae12, #e3930f);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+        -2px -2px 4px rgba(255, 255, 255, 1);
+}
+
+.slider_v3 .bar .fill .thumb::before {
+    position: absolute;
+    left: 15px;
+    top: 3px;
+    content: '\f0c9';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    color: #EBECF0;
+    transform: rotate(90deg);
 }
